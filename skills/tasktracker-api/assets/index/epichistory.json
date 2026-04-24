@@ -1,0 +1,34 @@
+{
+  "model": {
+    "schema": "assets/index/epichistory.json#model",
+    "collection": true,
+    "fields": {
+      "id": "integer:int32",
+      "hidden": "boolean",
+      "epicId": "integer:int32",
+      "command": "Visary.TaskTracker.Entities.Enums.EpicCommand",
+      "commandName": "string nullable",
+      "createdAt": "string:date-time",
+      "executorId": "integer:int32 nullable",
+      "executorFullName": "string nullable",
+      "data": "string nullable"
+    }
+  },
+  "methods": [
+    {
+      "key": "GET /EpicHistory",
+      "cliShape": "python api.py -m get_epic_history --arg task_id=<value>",
+      "summary": "get epic history"
+    },
+    {
+      "key": "GET /odata/EpicHistory",
+      "cliShape": "python api.py -m odata_epic_history --arg task_id=<value> --odata-arg '$filter=<value>' --odata-arg '$select=<value>' --odata-arg '$expand=<value>' --odata-arg '$top=<value>' --odata-arg '$skip=<value>' --odata-arg '$orderby=<value>' --odata-arg '$count=<true|false>'",
+      "summary": "odata epic history"
+    },
+    {
+      "key": "GET /odata/EpicHistory/$count",
+      "cliShape": "python api.py -m odata_epic_history_count --arg task_id=<value> --odata-arg '$filter=<value>'",
+      "summary": "odata epic history count"
+    }
+  ]
+}

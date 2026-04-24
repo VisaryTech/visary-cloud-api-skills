@@ -1,0 +1,90 @@
+{
+  "model": {
+    "schema": "assets/index/milestone.json#model",
+    "collection": true,
+    "fields": {
+      "id": "integer:int32",
+      "hidden": "boolean",
+      "projectTitle": "string nullable",
+      "projectId": "integer:int32",
+      "title": "string nullable",
+      "description": "string nullable",
+      "startDate": "string:date",
+      "dueDate": "string:date",
+      "state": "Visary.TaskTracker.Entities.Enums.EntryState",
+      "roadmapOrder": "integer:int32",
+      "taskCount": "integer:int32",
+      "openTaskCount": "integer:int32",
+      "closedTaskCount": "integer:int32",
+      "totalTaskWeight": "integer:int32 nullable",
+      "progress": "integer:int32"
+    }
+  },
+  "methods": [
+    {
+      "key": "GET /Milestone",
+      "cliShape": "python api.py -m get_milestone --arg project_id=<value>",
+      "summary": "get milestone"
+    },
+    {
+      "key": "GET /Milestone/query/Get/{milestoneId}",
+      "cliShape": "python api.py -m get_milestone_query_get_milestone_id --posarg <milestone_id>",
+      "summary": "get milestone milestone id"
+    },
+    {
+      "key": "GET /Milestone/query/GetObjectPermissions/{milestoneId}",
+      "cliShape": "python api.py -m get_milestone_query_get_object_permissions_milestone_id --posarg <milestone_id>",
+      "summary": "get milestone object permissions milestone id"
+    },
+    {
+      "key": "GET /Milestone/query/GetTypePermissions",
+      "cliShape": "python api.py -m get_milestone_query_get_type_permissions --arg project_id=<value>",
+      "summary": "get milestone type permissions"
+    },
+    {
+      "key": "POST /Milestone/command/Create",
+      "cliShape": "python api.py -m post_milestone_command_create --arg body=<json>",
+      "summary": "post milestone create"
+    },
+    {
+      "key": "PATCH /Milestone/command/Update/{milestoneId}",
+      "cliShape": "python api.py -m patch_milestone_command_update_milestone_id --posarg <milestone_id> --arg body=<json>",
+      "summary": "patch milestone update milestone id"
+    },
+    {
+      "key": "PATCH /Milestone/command/Reopen/{milestoneId}",
+      "cliShape": "python api.py -m patch_milestone_command_reopen_milestone_id --posarg <milestone_id>",
+      "summary": "patch milestone reopen milestone id"
+    },
+    {
+      "key": "PATCH /Milestone/command/Close/{milestoneId}",
+      "cliShape": "python api.py -m patch_milestone_command_close_milestone_id --posarg <milestone_id>",
+      "summary": "patch milestone close milestone id"
+    },
+    {
+      "key": "DELETE /Milestone/command/Delete/{milestoneId}",
+      "cliShape": "python api.py -m delete_milestone_command_delete_milestone_id --posarg <milestone_id>",
+      "summary": "delete milestone milestone id"
+    },
+    {
+      "key": "POST /Milestone/command/Restore/{milestoneId}",
+      "cliShape": "python api.py -m post_milestone_command_restore_milestone_id --posarg <milestone_id>",
+      "summary": "post milestone restore milestone id"
+    },
+    {
+      "key": "PATCH /Milestone/command/ChangeRoadmapOrder/{milestoneId}",
+      "cliShape": "python api.py -m patch_milestone_command_change_roadmap_order_milestone_id --posarg <milestone_id> --arg body=<json>",
+      "summary": "patch milestone change roadmap order milestone id"
+    },
+    {
+      "key": "GET /odata/Milestone",
+      "cliShape": "python api.py -m odata_milestone --arg project_id=<value> --odata-arg '$filter=<value>' --odata-arg '$select=<value>' --odata-arg '$expand=<value>' --odata-arg '$top=<value>' --odata-arg '$skip=<value>' --odata-arg '$orderby=<value>' --odata-arg '$count=<true|false>'",
+      "summary": "odata milestone"
+    },
+    {
+      "key": "GET /odata/Milestone/$count",
+      "cliShape": "python api.py -m odata_milestone_count --arg project_id=<value> --odata-arg '$filter=<value>'",
+      "summary": "odata milestone count"
+    }
+  ]
+}

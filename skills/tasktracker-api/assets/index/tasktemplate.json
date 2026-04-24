@@ -1,0 +1,70 @@
+{
+  "model": {
+    "schema": "assets/index/tasktemplate.json#model",
+    "collection": true,
+    "fields": {
+      "id": "integer:int32",
+      "hidden": "boolean",
+      "title": "string nullable",
+      "taskDescription": "string nullable",
+      "authorFullName": "string nullable",
+      "authorId": "integer:int32",
+      "createdAt": "string:date-time",
+      "updatedAt": "string:date-time nullable",
+      "scopeId": "integer:int32 nullable",
+      "scopeType": "Visary.TaskTracker.Entities.Enums.TaskTemplateScopeType"
+    }
+  },
+  "methods": [
+    {
+      "key": "GET /TaskTemplate",
+      "cliShape": "python api.py -m get_task_template --arg scope_type=<value> --arg scope_id=<value>",
+      "summary": "get task template"
+    },
+    {
+      "key": "GET /TaskTemplate/query/Get/{templateId}",
+      "cliShape": "python api.py -m get_task_template_query_get_template_id --posarg <template_id>",
+      "summary": "get task template template id"
+    },
+    {
+      "key": "GET /TaskTemplate/query/GetObjectPermissions/{templateId}",
+      "cliShape": "python api.py -m get_task_template_query_get_object_permissions_template_id --posarg <template_id>",
+      "summary": "get task template object permissions template id"
+    },
+    {
+      "key": "GET /TaskTemplate/query/GetTypePermissions",
+      "cliShape": "python api.py -m get_task_template_query_get_type_permissions --arg scope_type=<value> --arg scope_id=<value>",
+      "summary": "get task template type permissions"
+    },
+    {
+      "key": "POST /TaskTemplate/command/Create",
+      "cliShape": "python api.py -m post_task_template_command_create --arg body=<json>",
+      "summary": "post task template create"
+    },
+    {
+      "key": "PATCH /TaskTemplate/command/Update/{templateId}",
+      "cliShape": "python api.py -m patch_task_template_command_update_template_id --posarg <template_id> --arg body=<json>",
+      "summary": "patch task template update template id"
+    },
+    {
+      "key": "DELETE /TaskTemplate/command/Delete/{templateId}",
+      "cliShape": "python api.py -m delete_task_template_command_delete_template_id --posarg <template_id>",
+      "summary": "delete task template template id"
+    },
+    {
+      "key": "POST /TaskTemplate/command/Restore/{templateId}",
+      "cliShape": "python api.py -m post_task_template_command_restore_template_id --posarg <template_id>",
+      "summary": "post task template restore template id"
+    },
+    {
+      "key": "GET /odata/TaskTemplate",
+      "cliShape": "python api.py -m odata_task_template --arg scope_type=<value> --arg scope_id=<value> --odata-arg '$filter=<value>' --odata-arg '$select=<value>' --odata-arg '$expand=<value>' --odata-arg '$top=<value>' --odata-arg '$skip=<value>' --odata-arg '$orderby=<value>' --odata-arg '$count=<true|false>'",
+      "summary": "odata task template"
+    },
+    {
+      "key": "GET /odata/TaskTemplate/$count",
+      "cliShape": "python api.py -m odata_task_template_count --arg scope_type=<value> --arg scope_id=<value> --odata-arg '$filter=<value>'",
+      "summary": "odata task template count"
+    }
+  ]
+}
