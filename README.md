@@ -1,6 +1,6 @@
 # Visary Cloud API Skills
 
-Codex/OpenClaw skills for agent-driven work with Visary Cloud ERP APIs.
+Skills for agent-driven work with Visary Cloud APIs.
 
 The root `SKILL.md` acts as a router: it selects the specialized sub-skill for the requested API domain and does not define API endpoints directly.
 
@@ -35,7 +35,7 @@ The root skill must not call APIs directly and must not invent endpoints, fields
 ## Requirements
 
 - Python 3.10+
-- access to the relevant ERP APIs
+- access to the relevant Visary Cloud APIs
 - configured connection settings and client credentials
 
 Supported environment variables:
