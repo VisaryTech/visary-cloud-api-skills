@@ -10,14 +10,10 @@ if str(COMMON_SCRIPTS_DIR) not in sys.path:
     sys.path.insert(0, str(COMMON_SCRIPTS_DIR))
 
 import requests
-from visary_cloud_common import get_access_token, read_config_file
+from visary_cloud_common import get_access_token, read_config_value
 
 
 class TaskTrackerAPI:
-    @staticmethod
-    def _read_file(path):
-        return read_config_file(path)
-
     @classmethod
     def _append_tasktracker_path(cls, base_url):
         normalized = str(base_url).rstrip("/")
@@ -32,7 +28,10 @@ class TaskTrackerAPI:
         if explicit_endpoint:
             return explicit_endpoint.rstrip("/")
 
-        visary_cloud_base_url = os.getenv("VIS_API_BASE_URL") or cls._read_file("~/.config/visary_cloud/api_base_url")
+        visary_cloud_base_url = (
+            os.getenv("VIS_API_BASE_URL")
+            or read_config_value("apiBaseUrl")
+        )
         resolved = cls._append_tasktracker_path(visary_cloud_base_url) if visary_cloud_base_url else None
         if not resolved:
             raise ValueError("Missing Visary Cloud TaskTracker endpoint")

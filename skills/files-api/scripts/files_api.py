@@ -12,7 +12,7 @@ if str(COMMON_SCRIPTS_DIR) not in sys.path:
     sys.path.insert(0, str(COMMON_SCRIPTS_DIR))
 
 import requests
-from visary_cloud_common import get_access_token, read_config_file
+from visary_cloud_common import get_access_token, read_config_value
 
 
 SKILL_ROOT = Path(__file__).resolve().parent.parent
@@ -21,10 +21,6 @@ MANIFEST_PATH = INDEX_DIR / "manifest.json"
 
 
 class FilesAPI:
-    @staticmethod
-    def _read_file(path):
-        return read_config_file(path)
-
     @classmethod
     def _resolve_base_url(cls, config=None):
         config = config or {}
@@ -35,7 +31,7 @@ class FilesAPI:
         generic = (
             os.getenv("VIS_API_BASE_URL")
             or os.getenv("visary_cloud_api_base_url")
-            or cls._read_file("~/.config/visary_cloud/api_base_url")
+            or read_config_value("apiBaseUrl")
         )
         if not generic:
             raise ValueError("Missing Visary Cloud files endpoint")

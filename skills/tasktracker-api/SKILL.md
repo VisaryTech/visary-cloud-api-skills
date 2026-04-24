@@ -22,7 +22,7 @@ Rules:
 - If a field or endpoint is missing in the runtime indexes, do not invent it.
 - Do not invent high-level scenarios such as "create task", "change labels", or "read epic" unless they are tied to a concrete documented endpoint.
 - The client always gets an access token through `client_credentials`.
-- `VIS_API_BASE_URL` and `~/.config/visary_cloud/api_base_url` are treated as the VIS base URL; the client calls TaskTracker at `VIS_API_BASE_URL + "/tasktracker"`.
+- `VIS_API_BASE_URL` and `apiBaseUrl` in `~/.config/visary-cloud.json` are treated as the VIS base URL; the client calls TaskTracker at `<base_url> + "/tasktracker"`.
 - `visary_cloud_tasktracker_api_base_url` or config `endpoint` can still override the fully qualified TaskTracker endpoint directly.
 - OData read endpoints must exclude hidden entities by default with `Hidden eq false`; use `--include-hidden` only when reading deleted data is explicitly required.
 - Domain model field names are interpreted differently by API surface: REST-oriented model fields and request parameters use `camelCase`, while OData entity fields in `$select`, `$filter`, `$expand`, and `$orderby` use `PascalCase`.

@@ -47,13 +47,21 @@ VIS_CLIENT_ID
 VIS_CLIENT_SECRET
 ```
 
-Local user configuration files can also be used:
+Local user configuration can also be stored in one JSON file:
+
+```json
+{
+  "apiBaseUrl": "https://vis.example",
+  "tokenUrl": "https://id-vis.example/oidc/connect/token",
+  "clientId": "client-id",
+  "clientSecret": "client-secret"
+}
+```
+
+Expected path:
 
 ```text
-~/.config/visary_cloud/api_base_url
-~/.config/visary_cloud/token_url
-~/.config/visary_cloud/client_id
-~/.config/visary_cloud/client_secret
+~/.config/visary-cloud.json
 ```
 
 Environment variables are not the only supported configuration mechanism, so the root `SKILL.md` does not require them in metadata.
@@ -65,7 +73,7 @@ Secrets must not be stored in the repository.
 Use an external secret source:
 
 - environment variables;
-- local user configuration files;
+- `~/.config/visary-cloud.json`;
 - the agent runtime's secret storage.
 
 ## Development

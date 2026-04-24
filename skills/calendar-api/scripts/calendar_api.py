@@ -8,17 +8,16 @@ if str(COMMON_SCRIPTS_DIR) not in sys.path:
     sys.path.insert(0, str(COMMON_SCRIPTS_DIR))
 
 import requests
-from visary_cloud_common import get_access_token, read_config_file
+from visary_cloud_common import get_access_token, read_config_value
 
 
 class CalendarAPI:
-    @staticmethod
-    def _read_file(path):
-        return read_config_file(path)
-
     @classmethod
     def _resolve_base_url(cls, config=None):
-        resolved = os.getenv("VIS_API_BASE_URL") or cls._read_file("~/.config/visary_cloud/api_base_url")
+        resolved = (
+            os.getenv("VIS_API_BASE_URL")
+            or read_config_value("apiBaseUrl")
+        )
         if not resolved:
             raise ValueError("Missing Visary Cloud calendar endpoint")
         return f"{resolved.rstrip('/')}/calendar"

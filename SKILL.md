@@ -36,13 +36,21 @@ All sub-skills use client credentials and expect the same base ERP configuration
 - `VIS_API_BASE_URL`
 - `VIS_TOKEN_URL`
 
-Local user config files may also be used where supported by the sub-skill:
+Local user config may also be stored in one JSON file:
+
+```json
+{
+  "apiBaseUrl": "https://vis.example",
+  "tokenUrl": "https://id-vis.example/oidc/connect/token",
+  "clientId": "client-id",
+  "clientSecret": "client-secret"
+}
+```
+
+Expected path:
 
 ```text
-~/.config/visary_cloud/api_base_url
-~/.config/visary_cloud/token_url
-~/.config/visary_cloud/client_id
-~/.config/visary_cloud/client_secret
+~/.config/visary-cloud.json
 ```
 
 Secrets must not be committed to the repository.

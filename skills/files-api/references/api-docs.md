@@ -37,10 +37,10 @@ Preferred environment variables:
 - `VIS_CLIENT_SECRET`
 - `VIS_TOKEN_URL`
 
-Fallbacks:
+JSON config:
 
-- `VIS_API_BASE_URL` is accepted and resolved as `VIS_API_BASE_URL + "/files"`.
-- `~/.config/visary_cloud/api_base_url` and the generic `~/.config/visary_cloud/*` secrets are also accepted.
+- `~/.config/visary-cloud.json` is accepted with `apiBaseUrl`, `tokenUrl`, `clientId`, and `clientSecret`.
+- `apiBaseUrl` is resolved as `apiBaseUrl + "/files"`.
 
 ## CLI Rules
 

@@ -1,6 +1,10 @@
+import json
 import os
 from pathlib import Path
 from urllib.parse import urlparse
+
+
+CONFIG_FILE_PATH = "~/.config/visary-cloud.json"
 
 
 def read_config_file(path):
@@ -8,6 +12,29 @@ def read_config_file(path):
         return Path(os.path.expanduser(path)).read_text(encoding="utf-8").strip()
     except Exception:
         return None
+
+
+def read_user_config(path=None):
+    path = path or CONFIG_FILE_PATH
+    raw = read_config_file(path)
+    if not raw:
+        return {}
+    try:
+        payload = json.loads(raw)
+    except ValueError as exc:
+        raise ValueError(f"Invalid JSON config file: {path}: {exc}") from exc
+    if not isinstance(payload, dict):
+        raise ValueError(f"Invalid JSON config file: {path}: expected an object")
+    return payload
+
+
+def read_config_value(*keys):
+    config = read_user_config()
+    for key in keys:
+        value = config.get(key)
+        if value:
+            return str(value).strip()
+    return None
 
 
 def derive_auth_base_url(base_url):
@@ -29,7 +56,7 @@ def resolve_token_url(base_url, config=None, env_names=()):
         if value:
             return value.rstrip("/")
 
-    file_value = read_config_file("~/.config/visary_cloud/token_url")
+    file_value = read_config_value("tokenUrl")
     if file_value:
         return file_value.rstrip("/")
 
@@ -41,12 +68,12 @@ def resolve_client_credentials():
     client_id = (
         os.getenv("VIS_CLIENT_ID")
         or os.getenv("visary_cloud_client_id")
-        or read_config_file("~/.config/visary_cloud/client_id")
+        or read_config_value("clientId")
     )
     client_secret = (
         os.getenv("VIS_CLIENT_SECRET")
         or os.getenv("visary_cloud_client_secret")
-        or read_config_file("~/.config/visary_cloud/client_secret")
+        or read_config_value("clientSecret")
     )
     if not client_id or not client_secret:
         raise RuntimeError("Missing credentials: VIS_CLIENT_ID and/or VIS_CLIENT_SECRET")
