@@ -8,7 +8,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-MODULE_PATH = ROOT / "skills" / "tasktracker-api" / "scripts" / "tasktracker_call.py"
+MODULE_PATH = ROOT / "subskills" / "tasktracker-api" / "scripts" / "tasktracker_call.py"
 
 
 def load_tasktracker_call_module():

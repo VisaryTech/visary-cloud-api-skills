@@ -7,7 +7,7 @@ import sys
 
 
 ROOT = Path(__file__).resolve().parents[1]
-MODULE_PATH = ROOT / "skills" / "calendar-api" / "scripts" / "calendar_call.py"
+MODULE_PATH = ROOT / "subskills" / "calendar-api" / "scripts" / "calendar_call.py"
 
 
 def load_calendar_call_module():

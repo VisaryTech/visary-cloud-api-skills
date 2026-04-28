@@ -6,7 +6,7 @@ from unittest.mock import patch
 
 
 ROOT = Path(__file__).resolve().parents[1]
-MODULE_PATH = ROOT / "skills" / "files-api" / "scripts" / "files_api.py"
+MODULE_PATH = ROOT / "subskills" / "files-api" / "scripts" / "files_api.py"
 
 
 def load_files_api_module():

@@ -8,9 +8,9 @@ The root `SKILL.md` acts as a router: it selects the specialized sub-skill for t
 
 - `SKILL.md` - root router skill.
 - `scripts/` - shared runtime helpers used by all sub-skills.
-- `skills/tasktracker-api/` - TaskTracker workflows: tasks, epics, projects, comments, boards, sprints, milestones, labels, and related entities.
-- `skills/calendar-api/` - Calendar workflows: calendars, events, permissions, calendar import, and calendar export.
-- `skills/files-api/` - Files workflows: drives, items, uploads, downloads, previews, links, annotations, cleanup, and file-system metadata.
+- `subskills/tasktracker-api/` - TaskTracker workflows: tasks, epics, projects, comments, boards, sprints, milestones, labels, and related entities.
+- `subskills/calendar-api/` - Calendar workflows: calendars, events, permissions, calendar import, and calendar export.
+- `subskills/files-api/` - Files workflows: drives, items, uploads, downloads, previews, links, annotations, cleanup, and file-system metadata.
 
 Each sub-skill contains:
 

@@ -6,15 +6,15 @@ metadata: {"openclaw":{"requires":{"anyBins":["python","python3","py"]}}}
 
 # Visary Cloud API Skills
 
-Use this root skill as a router for ERP API work. It does not define API endpoints directly. For any concrete API call, load and follow the matching sub-skill under `skills/`.
+Use this root skill as a router for ERP API work. It does not define API endpoints directly. For any concrete API call, load and follow the matching sub-skill under `subskills/`.
 
 Shared runtime helpers live in repository-level `scripts/`. Specialized sub-skills should reuse those helpers instead of carrying duplicated HTTP or Visary Cloud auth/config code.
 
 ## Route Selection
 
-- Use `skills/tasktracker-api/SKILL.md` for ERP TaskTracker entities and workflows: tasks, epics, projects, comments, boards, sprints, milestones, labels, registries, project membership, task history, and epic history.
-- Use `skills/calendar-api/SKILL.md` for ERP Calendar entities and workflows: calendars, events, permissions, calendar import, and calendar export.
-- Use `skills/files-api/SKILL.md` for ERP Files entities and workflows: drives, items, uploads, downloads, previews, links, annotations, archive operations, cleanup, and file-system metadata.
+- Use `subskills/tasktracker-api/SKILL.md` for ERP TaskTracker entities and workflows: tasks, epics, projects, comments, boards, sprints, milestones, labels, registries, project membership, task history, and epic history.
+- Use `subskills/calendar-api/SKILL.md` for ERP Calendar entities and workflows: calendars, events, permissions, calendar import, and calendar export.
+- Use `subskills/files-api/SKILL.md` for ERP Files entities and workflows: drives, items, uploads, downloads, previews, links, annotations, archive operations, cleanup, and file-system metadata.
 
 If a user request spans multiple API domains, load every relevant sub-skill and handle each domain through its own workflow.
 
