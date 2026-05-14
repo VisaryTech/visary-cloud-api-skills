@@ -8,6 +8,10 @@ metadata: {"openclaw":{"requires":{"anyBins":["python","python3","py"]}}}
 
 Use this skill when you need to work with VIS Calendar strictly through Swagger documentation.
 
+## Runtime Preflight
+
+Before opening indexes or making API calls, verify that Python is available. If it is unavailable, stop and report that Python is required. Do not use fallback tools or handwritten HTTP requests.
+
 Skill artifacts:
 
 - `assets/index/manifest.json` - the only entry point into runtime indexes.
@@ -43,12 +47,13 @@ Rules:
 
 Workflow:
 
-1. Open `assets/index/manifest.json`.
-2. Select the relevant compact index only through entries listed in `assets/index/manifest.json`.
-3. Find the required endpoint by `key` or `summary`.
-4. Take the `cliShape` field from the matched entry.
-5. Use the command from `cliShape`.
-6. If Swagger does not contain the required endpoint or there is no matching index entry, report that explicitly and stop.
+1. Verify that Python is available. If it is unavailable, stop immediately.
+2. Open `assets/index/manifest.json`.
+3. Select the relevant compact index only through entries listed in `assets/index/manifest.json`.
+4. Find the required endpoint by `key` or `summary`.
+5. Take the `cliShape` field from the matched entry.
+6. Use the command from `cliShape`.
+7. If Swagger does not contain the required endpoint or there is no matching index entry, report that explicitly and stop.
 
 Documented query parameters:
 

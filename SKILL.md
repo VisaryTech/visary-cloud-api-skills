@@ -10,6 +10,10 @@ Use this root skill as a router for ERP API work. It does not define API endpoin
 
 Shared runtime helpers live in repository-level `scripts/`. Specialized sub-skills should reuse those helpers instead of carrying duplicated HTTP or Visary Cloud auth/config code.
 
+## Runtime Preflight
+
+Before routing or making API calls, verify that Python is available. If it is unavailable, stop and report that Python is required. Do not use fallback tools or handwritten HTTP requests.
+
 ## Route Selection
 
 - Use `subskills/tasktracker-api/SKILL.md` for ERP TaskTracker entities and workflows: tasks, epics, projects, comments, boards, sprints, milestones, labels, registries, project membership, task history, and epic history.

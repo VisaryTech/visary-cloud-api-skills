@@ -8,6 +8,10 @@ metadata: {"openclaw":{"requires":{"anyBins":["python","python3","py"]}}}
 
 Use this skill when you need to work with VIS TaskTracker through the generated runtime indexes and CLI wrappers shipped with the skill.
 
+## Runtime Preflight
+
+Before opening indexes or making API calls, verify that Python is available. If it is unavailable, stop and report that Python is required. Do not use fallback tools or handwritten HTTP requests.
+
 Skill artifacts:
 
 - `assets/index/manifest.json` — the only entry point into runtime indexes.
@@ -30,13 +34,14 @@ Rules:
 
 Workflow:
 
-1. Open `assets/index/manifest.json`.
-2. Select the relevant compact index only through entries listed in `assets/index/manifest.json`.
-3. Find the required endpoint by `key` or `summary`.
-4. Take the `cliShape` field from the matched entry.
-5. For OData endpoints, preserve the base command from `cliShape` and add `--odata-arg key=value` as needed. The CLI will append `Hidden eq false` to `$filter` by default.
-6. Use the command from `cliShape`.
-7. If the required endpoint is absent from the runtime indexes or there is no matching index entry, report that explicitly and stop.
+1. Verify that Python is available. If it is unavailable, stop immediately.
+2. Open `assets/index/manifest.json`.
+3. Select the relevant compact index only through entries listed in `assets/index/manifest.json`.
+4. Find the required endpoint by `key` or `summary`.
+5. Take the `cliShape` field from the matched entry.
+6. For OData endpoints, preserve the base command from `cliShape` and add `--odata-arg key=value` as needed. The CLI will append `Hidden eq false` to `$filter` by default.
+7. Use the command from `cliShape`.
+8. If the required endpoint is absent from the runtime indexes or there is no matching index entry, report that explicitly and stop.
 
 ## OData Pitfalls
 
